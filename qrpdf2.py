@@ -14,8 +14,8 @@ images_name = tuple(map(lambda im: im.stem , images))
 # （※１）ラベルシートの設定
 cards_num= (3, 8)  # カードをA4に何枚配置するか（横の枚数, 縦の枚数）
 A4_mm = (210, 297)  # A4用紙のサイズをmmで指定(横、縦)
-card_mm = (70, 33.9)  # 1枚のラベルのサイズをmmで指定(横、縦)
-margin_mm = (0, 12.7) # 余白をmmで指定(左右、上下)
+card_mm = (70, 33.7)  # 1枚のラベルのサイズをmmで指定(横、縦)
+margin_mm = (0, 13.7) # 余白をmmで指定(左右、上下)
 
 to_px = A4[0] / A4_mm[0] # mmをpxに変換
 card = tuple(( x * to_px for  x in card_mm )) # カードのサイズpx
@@ -38,7 +38,7 @@ page.setFont('GenShinGothic', font_size)
 for imagen in images:
     pos = [margin[0], margin[1]] # 描画の初期地点
     i = 0
-    page.setLineWidth(2)  # 線の太さを指定
+    page.setLineWidth(1)  # 線の太さを指定
     # 画像読み込み
     image = Image.open(imagen)
     while  (i < cards_num[0] * cards_num[1]):
@@ -46,7 +46,7 @@ for imagen in images:
                 for x in range(cards_num[0]):
 
                     # （※３）図形（長方形、直線）とテキストの描画
-                    page.rect(pos[0], pos[1], card[0], card[1]) 
+                    # page.rect(pos[0], pos[1], card[0], card[1]) 
                     # page.line(pos[0] + card[0]/12, pos[1] + card[1]/4, pos[0] + card[0]/2 - 5, pos[1] + card[1]/4)
                     page.setFont("GenShinGothic", font_size)
                     # ファイルのフルパスからファイル名を取得
